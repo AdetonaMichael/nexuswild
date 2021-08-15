@@ -23,3 +23,4 @@ Route::resource('categories', CategoriesController::class);
 Auth::routes();
 Route::get('trashed-posts', [PostsController::class, 'trashed'])->name('trashed-posts.index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::put('restore-post/{post}', [PostsController::class, 'restore'])->name('restore-posts');

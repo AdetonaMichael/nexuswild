@@ -131,7 +131,14 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function trashed(){
-        $trashed = Post::withTrashed()->get();
+        $trashed = Post::onlyTrashed()->get();
         return view('posts.index')->with('posts', $trashed);
+    }
+
+    public function restore($id){
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        $post->restore();
+        session()->flash('success', 'Post Restored Successfully...');
+        return redirect()->back();
     }
 }

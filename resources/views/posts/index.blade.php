@@ -19,10 +19,20 @@
         @foreach($posts as $post)
           <tr>
             <td><img src="{{ asset('storage/'.$post->image)}}" width=60 height=60></td>
-            <td><p>{{ $post->trashed() ?"$post->title":"Trash The Post To Delete" }}</p></td>
+            <td><p>{{ $post->title }}</p></td>
             @if(!$post->trashed())
             <td>
               <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
+            </td>
+            @else
+            <td>
+
+            <form action="{{ route('restore-posts', $post->id) }}" method="POST">
+              @csrf
+              @method('PUT')
+              <button type="submit" class="btn btn-info btn-sm text-white">Restore</button>
+
+            </form>
             </td>
               @endif
             
