@@ -14,6 +14,7 @@
       <thead>
         <th>Image</th>
         <th>Title</th>
+        <th>Posts Count</th>
       </thead>
       <tbody>
         @foreach($posts as $post)
@@ -25,8 +26,8 @@
               <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
             </td>
             @else
-            <td>
-
+              <td>{{ $category->post->count() }}</td>
+              <td>
             <form action="{{ route('restore-posts', $post->id) }}" method="POST">
               @csrf
               @method('PUT')
