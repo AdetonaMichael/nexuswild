@@ -14,19 +14,20 @@
       <thead>
         <th>Image</th>
         <th>Title</th>
-        <th>Posts Count</th>
+        <th>Category</th>
       </thead>
       <tbody>
         @foreach($posts as $post)
           <tr>
             <td><img src="{{ asset('storage/'.$post->image)}}" width=60 height=60></td>
             <td><p>{{ $post->title }}</p></td>
+            <td><a href="{{ route('categories.edit', $post->category->id) }}">{{ $post->category->name }}</td>
             @if(!$post->trashed())
             <td>
               <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-info btn-sm">Edit</a>
             </td>
             @else
-              <td>{{ $category->post->count() }}</td>
+              
               <td>
             <form action="{{ route('restore-posts', $post->id) }}" method="POST">
               @csrf

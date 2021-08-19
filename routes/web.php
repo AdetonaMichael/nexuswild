@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,13 +15,17 @@ use App\Http\Controllers\PostsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
-Route::resource('posts', PostsController::class);
-Route::resource('categories', CategoriesController::class);
-Auth::routes();
-Route::get('trashed-posts', [PostsController::class, 'trashed'])->name('trashed-posts.index');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::put('restore-post/{post}', [PostsController::class, 'restore'])->name('restore-posts');
+Auth::routes();
+
+Route::middleware(['auth'])->group(function (){
+    Route::resource('posts', PostsController::class);
+    Route::resource('categories', CategoriesController::class);
+    Route::resource('tags', TagsController::class);
+    Route::get('trashed-posts', [PostsController::class, 'trashed'])->name('trashed-posts.index');
+    Route::put('restore-post/{post}', [PostsController::class, 'restore'])->name('restore-posts');
+    
+});

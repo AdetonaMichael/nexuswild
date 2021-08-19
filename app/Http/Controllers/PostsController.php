@@ -6,9 +6,13 @@ use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\Category;
+use App\Http\Middleware\VerifyCategoriesCount;
 
 class PostsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('verifyCategoriesCount')->only(['create','store']);
+    }
     /**
      * Display a listing of the resource.
      *

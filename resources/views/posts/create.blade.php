@@ -8,6 +8,7 @@
     </div>
     
     <div class="card-body">
+        @include('partials.errors')
        <form action="{{ isset($post)? route('posts.update', $post->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
            @csrf
           @if(isset($post))
@@ -39,6 +40,8 @@
            <div class="form-group">
             <label for="image">Image</label>
             <input type="file" class="form-control btn btn-primary" name="image" id="image"> 
+           </div>
+           <div>
             <label for="Category">Category</label>
             <select name="category" id="category" class="form-control">
                @foreach($categories as $category)

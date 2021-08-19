@@ -75,39 +75,51 @@
                 </div>
             </div>
         </nav>
-       
-        <div class="container-fluid">
+        @if(session()->has('success'))
+        <div class="alert alert-success text-success text-center mx-5">
+            {{ session()->get('success')  }}
+           </div> 
+           @endif
+        @if(session()->has('error'))
+        <div class="alert alert-danger text-danger text-center mx-5">
+            {{ session()->get('error')  }}
+           </div> 
+           @endif
+
+        
           
             <main class="py-4">
-                @if(session()->has('success'))
-                <div class="alert alert-success text-success text-center mx-5">
-                    {{ session()->get('success')  }}
-                   </div> 
-                   @endif
-
-                <div class="row">
-                    <div class="col-md-4">
-                       <ul class="list-group">
-                           <li class="list-group-item">
-                               <a href="{{ route('posts.index') }}">Post</a>
-                           </li>
-                           <li class="list-group-item">
-                               <a href="{{ route('categories.index') }}">Categories</a>
-                           </li>
-                       </ul>
-                       <ul class="list-group mt-5">
-                           <li class="list-group-item">
-                               <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
-                           </li>
-                       </ul>
+                @auth
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                           <ul class="list-group">
+                               <li class="list-group-item">
+                                   <a href="{{ route('posts.index') }}">Post</a>
+                               </li>
+                               <li class="list-group-item">
+                                   <a href="{{ route('categories.index') }}">Categories</a>
+                               </li>
+                               <li class="list-group-item">
+                                   <a href="{{ route('tags.index') }}">Tags</a>
+                               </li>
+                           </ul>
+                           <ul class="list-group mt-5">
+                               <li class="list-group-item">
+                                   <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
+                               </li>
+                           </ul>
+                        </div>
+                        <div class="col-md-8">
+                        @yield('content')
+                         </div>
+                        </main>
                     </div>
-                    <div class="col-md-8">
-                    @yield('content')
-                     </div>
-                  
-                </div>
-            </main>
-           </div>
+               </div>
+                @else
+                @yield('content')
+                @endauth
+
            <div>
             @include('layouts.footer')
         </div>
