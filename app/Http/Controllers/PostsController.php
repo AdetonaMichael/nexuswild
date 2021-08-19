@@ -6,6 +6,7 @@ use App\Http\Requests\Post\CreatePostRequest;
 use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Middleware\VerifyCategoriesCount;
 
 class PostsController extends Controller
@@ -30,7 +31,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create')->with('categories', Category::all());
+        return view('posts.create')->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -44,7 +45,7 @@ class PostsController extends Controller
         // upload the image
         $image = $request->image->store('posts');
         //create the post 
-        Post::create([
+        $post = Post::create([
           'title'=> $request->title,
           'description'=>$request->description,
           'content'=>$request->content,
@@ -53,6 +54,10 @@ class PostsController extends Controller
           'published_at'=>$request->published_at
 
         ]);
+        
+        if($request->tags){
+            $post->tags()->attach($request->tags);
+        }
         // flash the message
         session()->flash('success', 'Post Created Successfully!...');
         // redirect the user
@@ -78,7 +83,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post)->with('categories', Category::all());
+        return view('posts.create')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**

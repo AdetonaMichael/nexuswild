@@ -27,4 +27,16 @@ class Post extends Model
     public function category(){
            return $this->belongsTo(Category::class);
     }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class);
+    }
+    /**
+     * 
+     * Check if a Post has tag
+     * @return bool
+     */
+    public function hasTag($tadid){
+        return in_array($tadid, $this->tags->pluck('id')->toArray());
+    }
 }
