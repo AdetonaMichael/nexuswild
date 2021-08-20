@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'NexusWildSkin') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,6 +59,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                                        My Profile
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -97,6 +100,11 @@
                                <li class="list-group-item">
                                    <a href="{{ route('posts.index') }}">Post</a>
                                </li>
+                                 @if(auth()->user()->isAdmin())
+                                 <li class="list-group-item">
+                                    <a href="{{ route('users.index') }}">Users</a>
+                                </li>
+                                 @endif
                                <li class="list-group-item">
                                    <a href="{{ route('categories.index') }}">Categories</a>
                                </li>

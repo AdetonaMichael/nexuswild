@@ -92,7 +92,10 @@ class TagsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Tag $tag)
-    {
+    {   if($tag->posts->count() >0){
+        session()->flash('error','Tag cannot be deleted, becuase it is associated with some posts');
+        return redirect()->back();
+    }
         $tag->delete();
 
         session()->flash('success', 'Tag Deleted Successfully!...');
