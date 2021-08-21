@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,10 @@ use App\Http\Controllers\TagsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category');
+Route::get('blog/tags/{tag}', [PostsController::class,'tag'])->name('blog.tag');
 Auth::routes();
 
 Route::middleware(['auth'])->group(function (){

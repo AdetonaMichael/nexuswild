@@ -1,5 +1,39 @@
 @extends('layouts.app')
-
+@section('adminnav')
+<div class="col-md-2">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ route('posts.index') }}">Post</a>
+        </li>
+          @if(auth()->user()->isAdmin())
+          <li class="list-group-item">
+             <a href="{{ route('users.index') }}">Users</a>
+         </li>
+          @endif
+        <li class="list-group-item">
+            <a href="{{ route('categories.index') }}">Categories</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ route('tags.index') }}">Tags</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="/">Home</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="/home">Blog</a>
+        </li>
+    </ul>
+ </div>
+ @endsection
 @section('content')
 <div class="card card-default">
 
@@ -61,7 +95,7 @@
         @if($tags->count() > 0)
         <div class="form-group">
             <label for="tags">Tags</label>
-           <select name="tags[]" id = "tags" class="form-control tag_selector" multiple>
+           <select name="tags[]" id = "tags" class="form-control js-example-tokenizer" multiple>
             @foreach($tags as $tag)
                <option value="{{ $tag->id }}"
                  @if(isset($post))
@@ -76,29 +110,31 @@
            </select>   
         </div>
         @endif
-        <div class="form-group">
+        <div class="form-group py-4">
             <button type="submit" class="btn btn-success">{{ isset($post)?"Update Post":"Create Post" }}</button>
         </div>
        </form>
     </div>
 </div>
 @endsection
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    flatpickr('#published_at',{
+        enableTime: true,
+        enableSeconds: true
+    })
+
+    $(".js-example-tokenizer").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+    </script>
+@endsection
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" integrity="sha512-5m1IeUDKtuFGvfgz32VVD0Jd/ySGX7xdLxhqemTmThxHdgqlgPdupWoSN8ThtUSLpAGBvA8DY2oO7jJCrGdxoA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-@endsection
-@section('script')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-$(".tag_selector").select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
-})
-
-flatpickr('#published_at',{
-    enableTime:true
-}) </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 @endsection

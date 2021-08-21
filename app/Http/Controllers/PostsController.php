@@ -51,7 +51,8 @@ class PostsController extends Controller
           'content'=>$request->content,
           'image'=>$image,
           'category_id'=>$request->category,
-          'published_at'=>$request->published_at
+          'published_at'=>$request->published_at,
+          'user_id' => auth()->user()->id
 
         ]);
         
@@ -70,9 +71,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('blog.show')->with('post', $post)->with('categories', Category::all())->with('tags', Tag::all());
     }
 
     /**
@@ -151,5 +152,21 @@ class PostsController extends Controller
         $post->restore();
         session()->flash('success', 'Post Restored Successfully...');
         return redirect()->back();
+    }
+    public function category(Category $category){
+          
+        return view('blog.category')
+        ->with('category', $category)
+        ->with('posts', $category->posts()->searched()->paginate(6))
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all());
+    }
+
+    public function tag(Tag $tag){
+        return view('blog.tag')
+        ->with('tag', $tag)
+        ->with('posts', $tag->posts()->searched()->paginate(6))
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all());
     }
 }

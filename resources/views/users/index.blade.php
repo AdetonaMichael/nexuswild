@@ -1,4 +1,39 @@
 @extends('layouts.app')
+@section('adminnav')
+<div class="col-md-2">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ route('posts.index') }}">Post</a>
+        </li>
+          @if(auth()->user()->isAdmin())
+          <li class="list-group-item">
+             <a href="{{ route('users.index') }}">Users</a>
+         </li>
+          @endif
+        <li class="list-group-item">
+            <a href="{{ route('categories.index') }}">Categories</a>
+        </li>
+        <li class="list-group-item">
+            <a href="{{ route('tags.index') }}">Tags</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="/">Home</a>
+        </li>
+    </ul>
+    <ul class="list-group mt-5">
+        <li class="list-group-item">
+            <a href="/home">Blog</a>
+        </li>
+    </ul>
+ </div>
+ @endsection
 @section('content')
 
 <div class="card card-default">
@@ -18,7 +53,7 @@
         @foreach($users as $user)
           <tr>
             {{-- <td><img src="{{ asset('storage/'.$post->image)}}" width=60 height=60></td> --}}
-            <td><i class="fa fa-user" aria-hidden="true"></i></td>
+            <td><img src="{{ Gravatar::src($user->email) }}" alt="User Gravater"></td>
             <td><p>{{ $user->name }}</p></td>
             <td>{{ $user->email }}</td>
              <td>{{ $user->role }}</td>

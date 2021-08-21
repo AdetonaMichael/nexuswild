@@ -11,8 +11,11 @@ class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $dates = [
+        'published_at'
+    ];
     protected $fillable = [
-        'title', 'description', 'content', 'image', 'published_at', 'category_id'
+        'title', 'description', 'content', 'image', 'published_at', 'category_id','user_id'
     ];
 
     /**
@@ -31,6 +34,9 @@ class Post extends Model
     public function tags(){
         return $this->belongsToMany(Tag::class);
     }
+    public function scopePublished($query){
+        return $query->where('published_at', '<=', now());
+    }
     /**
      * 
      * Check if a Post has tag
@@ -38,5 +44,15 @@ class Post extends Model
      */
     public function hasTag($tadid){
         return in_array($tadid, $this->tags->pluck('id')->toArray());
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+    public function scopeSearched($query){
+        $search = request()->query('search');
+        if(!$search){
+               return $query->published();
+        }
+        return $query->published()->where('title', 'LIKE', "%{$search}%");
     }
 }

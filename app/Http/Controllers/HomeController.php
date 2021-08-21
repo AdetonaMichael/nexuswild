@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Tag;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -22,7 +25,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   
+        
+        return view('home')
+        ->with('categories', Category::all())
+        ->with('tags', Tag::all())
+        ->with('posts', Post::searched()->paginate(6));
     }
 }
