@@ -1,8 +1,11 @@
 @extends('layouts.bloghome')
+@section('title')
+{{ $post->title }}
+@endsection
 @section('nav')
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="/"><img src="\images\nexus.jpg" width="50" style="border-radius:75%" height="50" alt="Nexus Wild Skin Care" /></a>
+                <a class="navbar-brand" href="/"><img src="\images\nexus.svg" width="150" height="100" style="border-radius:75%" height="50" alt="Nexus Wild Skin Care" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

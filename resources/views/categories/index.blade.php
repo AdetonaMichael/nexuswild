@@ -1,42 +1,13 @@
 @extends('layouts.app')
+@section('title')
+NexusWildSkinCare | Categories List
+@endsection
 @section('adminnav')
-<div class="col-md-2">
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a href="{{ route('posts.index') }}">Post</a>
-        </li>
-          @if(auth()->user()->isAdmin())
-          <li class="list-group-item">
-             <a href="{{ route('users.index') }}">Users</a>
-         </li>
-          @endif
-        <li class="list-group-item">
-            <a href="{{ route('categories.index') }}">Categories</a>
-        </li>
-        <li class="list-group-item">
-            <a href="{{ route('tags.index') }}">Tags</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="/">Home</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="/home">Blog</a>
-        </li>
-    </ul>
- </div>
+@include('partials.myadminav')
  @endsection
 @section('content')
 <div class="d-flex justify-content-end mb-2">
-    <a href="{{ route('categories.create') }}" class="btn btn-success">Add Category</a>
+    <a href="{{ route('categories.create') }}" class="btn btn-success"><i class="fa fa-plus mr-2" aria-hidden="true"></i> Add Category</a>
 </div>
 <div class="card card-default">
     <div class="card-header">

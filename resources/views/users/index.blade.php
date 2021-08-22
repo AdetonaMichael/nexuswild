@@ -1,53 +1,23 @@
 @extends('layouts.app')
+@section('title')
+NexusWildSkinCare |Profile Home
+@endsection
 @section('adminnav')
-<div class="col-md-2">
-    <ul class="list-group">
-        <li class="list-group-item">
-            <a href="{{ route('posts.index') }}">Post</a>
-        </li>
-          @if(auth()->user()->isAdmin())
-          <li class="list-group-item">
-             <a href="{{ route('users.index') }}">Users</a>
-         </li>
-          @endif
-        <li class="list-group-item">
-            <a href="{{ route('categories.index') }}">Categories</a>
-        </li>
-        <li class="list-group-item">
-            <a href="{{ route('tags.index') }}">Tags</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="{{ route('trashed-posts.index') }}">Trashed Post</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="/">Home</a>
-        </li>
-    </ul>
-    <ul class="list-group mt-5">
-        <li class="list-group-item">
-            <a href="/home">Blog</a>
-        </li>
-    </ul>
- </div>
+ @include('partials.myadminav')
  @endsection
 @section('content')
-
 <div class="card card-default">
   <div class="card-header">
-    <i class="fa fa-user" aria-hidden="true"></i> Users
+    <i class="fa fa-user fa-2x" aria-hidden="true"></i> USERS
   </div>
   <div class="card-body">
     @if($users->count()>0)
-    <table class="table">
+    <table class="table table-striped">
       <thead>
-        <th>Image</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Role</th>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
       </thead>
       <tbody>
         @foreach($users as $user)

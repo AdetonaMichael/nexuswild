@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
      <!-- Favicon-->
      <link rel="icon" type="image/x-icon" href="{{ asset('images/1.jpg') }}" />
-    <title>{{ config('app.name', 'NexusWild') }}</title>
+    <title>@yield('title')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -43,7 +43,7 @@
             {{ session()->get('error')  }}
            </div> 
            @endif
-            <main class="py-4">
+            <main  class="py-4 ">
                 @auth
                 <div class="container-fluid">
                     <div class="row">
