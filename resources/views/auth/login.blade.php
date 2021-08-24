@@ -1,12 +1,24 @@
 @extends('layouts.app')
+@section('css')
+<style>
+
+</style>
+@endsection
 
 @section('content')
+<div class="context text-center">
+    <h1>NexusWild SkinCare</h1>
+</div>
 <div class="container">
-    <div class="row justify-content-center">
+  
+    <div class="row justify-content-center login_holder">
+     
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+            <div  class="card pb-5">
+                <div class="card-header login_header">{{ __('Login') }}</div>
+                <div class="justify-content-center d-flex">
+                <img  src="/images/nexus_login.svg" alt="login image" width="300" height="200" />
+                </div>
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -53,12 +65,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button style="background-color:#675bff; color:white" type="submit" class="btn ">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a style="text-decoration:none;" class="btn btn-link text-dark" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -70,4 +82,5 @@
         </div>
     </div>
 </div>
+
 @endsection

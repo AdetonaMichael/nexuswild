@@ -19,21 +19,14 @@ const mix = require('laravel-mix');
 require('laravel-mix-purgecss');
 
 // ...
-module.exports = {
-    plugins:[
-        require('')
-    ]
-}
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .purgeCss({
-    content: [ 
-        'public/assets/css/**/*.css',
-        'public/assets/js/**/*.js',
-        'public/css/**/*.css',
-        'public/js/**/*.js',
-        'resources/views/**/*.blade.php'
-        
-        ],
-});
+   .purgeCss().purgeCss([
+    'public/assets/css/**/*.css',
+    'public/css/**/*.css',
+    'public/assets/js/**/*.js',
+    'public/js/**/*.js',
+   ]
+    
+   );

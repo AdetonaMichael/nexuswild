@@ -11,6 +11,7 @@
                     </button>
                   </div>
              </form>
+      
             <h5><span>Newsletter</span></h5>
             <!-- Go to your Mailchimp account/Lists/Sign Up Forms/Embedded forms and replace the code below with your own  -->
             <!-- Begin MailChimp Signup Form -->

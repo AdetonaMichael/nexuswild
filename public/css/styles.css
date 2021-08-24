@@ -33,7 +33,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #d63384;
+  --bs-primary: #675bff;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -1182,8 +1182,8 @@ textarea.form-control-lg {
 
 .btn-primary {
   color: #fff;
-  background-color: #d63384;
-  border-color: #d63384;
+  background-color: #675bff;
+  border-color: #fff;
 }
 .btn-primary:hover {
   color: #fff;
@@ -9514,7 +9514,14 @@ p {
 #mainNav .navbar-nav .nav-item .nav-link.active, #mainNav .navbar-nav .nav-item .nav-link:hover {
   color: #d63384;
 }
-
+.login_holder{
+  margin-top:20%;
+  margin-bottom:20%;
+}
+.login_header{
+  background-color:#675bff ;
+  color: white;
+}
 @media (min-width: 992px) {
   #mainNav {
     padding-top: 1.5rem;
@@ -9558,7 +9565,7 @@ header.masthead {
   padding-bottom: 6rem;
   text-align: center;
   color: #fff;
-  background-image: url("https://cdn.pixabay.com/photo/2016/11/05/14/54/spa-1800394_960_720.jpg");
+  background-image: url("https://cdn.pixabay.com/photo/2015/07/22/21/25/woman-856125_960_720.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
