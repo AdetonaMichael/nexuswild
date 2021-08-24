@@ -63,7 +63,7 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $Tag)
+    public function edit(Tag $tag)
     {
         return view('tags.create')->with('tag', $tag);
     }
@@ -75,7 +75,7 @@ class TagsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTagsRequest $request  , Tag $tag)
+    public function update(Request $request  , Tag $tag)
     {
         $tag->update([
             'name'=>$request->name

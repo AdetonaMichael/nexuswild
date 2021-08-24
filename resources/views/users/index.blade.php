@@ -12,7 +12,7 @@ NexusWildSkinCare |Profile Home
   </div>
   <div class="card-body">
     @if($users->count()>0)
-    <table class="table table-striped">
+    <table class="table table-striped table-default">
       <thead>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
