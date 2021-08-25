@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
      <!-- Favicon-->
-     <link rel="icon" type="image/x-icon" href="{{ asset('/images/1.jpg') }}" />
+     <link rel="icon" type="image/x-icon" href="{{ asset('/images/1.ico') }}" />
     <title>@yield('title')</title>
 
     <!-- Scripts -->
