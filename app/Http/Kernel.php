@@ -23,6 +23,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
     ];
 
     /**
@@ -39,12 +40,24 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class
         ],
 
         'api' => [
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+       'pagespeed' => [
+             // configure page speed middle ware ( downloaded from git hub)
+             \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+             \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+             \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+             \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+             //\RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+             //\RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+             \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+             \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
+       ]
     ];
 
     /**
@@ -65,6 +78,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'verifyCategoriesCount' => VerifyCategoriesCount::class,
-        'admin' => VerifyIsAdmin::class
+        'admin' => VerifyIsAdmin::class,
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
     ];
 }

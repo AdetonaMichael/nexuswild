@@ -12,9 +12,9 @@ NexusWildSkinCare | Home
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                
+
                 <li class="nav-item"><a class="nav-link" href="/home">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="#services">Services</a></li> --}}
                 <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             </ul>
@@ -39,7 +39,7 @@ NexusWildSkinCare | Home
                   </button>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+                    <a class="dropdown-item" href="{{ route('posts.index') }}">
                         My Profile
                     </a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -54,7 +54,7 @@ NexusWildSkinCare | Home
             </li>
         @endguest
     </ul>
-    
+
         </div>
     </div>
 </nav>
@@ -68,7 +68,7 @@ NexusWildSkinCare | Home
             </div>
         </header>
         <!-- Services-->
-        <section class="page-section" id="services">
+        {{-- <section class="page-section" id="services">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Services</h2>
@@ -101,7 +101,7 @@ NexusWildSkinCare | Home
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <!-- Portfolio Grid-->
         <section class="page-section bg-light" id="portfolio">
             <div class="container">
@@ -240,8 +240,8 @@ NexusWildSkinCare | Home
                                 <h4>December 2015</h4>
                                 <h4 class="subheading">Goal</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The goal of this blog is to serve Black women around the
-                                world. I will focus on Black-owned skincare brands, as well as products that work best for different Black
+                            <div class="timeline-body"><p class="text-muted">The goal of this blog is to serve  women around the
+                                world. I will focus on -owned skincare brands, as well as products that work best for different
                                 skin types. Other products will be added to the Feature section.</p></div>
                         </div>
                     </li>
@@ -268,13 +268,13 @@ NexusWildSkinCare | Home
                                 Skincare Products.</p></div>
                         </div>
                     </li>
-                    
+
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <h4>
                                 Be Part
                                 <br />
-                                Of The 
+                                Of The
                                 <br />
                                 Journey
                             </h4>
@@ -283,7 +283,7 @@ NexusWildSkinCare | Home
                 </ul>
             </div>
         </section>
- 
+
         <!-- Clients-->
         {{-- <div class="py-5">
             <div class="container">

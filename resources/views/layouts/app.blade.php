@@ -36,12 +36,12 @@
         @if(session()->has('success'))
         <div class="alert alert-success text-success text-center mx-5">
             {{ session()->get('success')  }}
-           </div> 
+           </div>
            @endif
         @if(session()->has('error'))
         <div class="alert alert-danger text-danger text-center mx-5">
             {{ session()->get('error')  }}
-           </div> 
+           </div>
            @endif
             <main  class="py-4 ">
                 @auth
@@ -61,7 +61,7 @@
            <div>
             @include('layouts.footer')
         </div>
-   
+
 
     </div>
     @yield('script')

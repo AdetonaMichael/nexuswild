@@ -21,9 +21,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::all()); 
+        return view('posts.index')->with('posts', Post::all());
     }
-
+    public function try(){
+        return view('try');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -44,7 +46,7 @@ class PostsController extends Controller
     {
         // upload the image
         $image = $request->image->store('posts');
-        //create the post 
+        //create the post
         $post = Post::create([
           'title'=> $request->title,
           'description'=>$request->description,
@@ -55,7 +57,7 @@ class PostsController extends Controller
           'user_id' => auth()->user()->id
 
         ]);
-        
+
         if($request->tags){
             $post->tags()->attach($request->tags);
         }
@@ -96,10 +98,10 @@ class PostsController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post) {
         $data = $request->only(['title','description','published_at','content']);
-        
+
         //check image
         if($request->hasFile('image')){
-              
+
              //upload image
              $image = $request->image->store('posts');
 
@@ -108,7 +110,7 @@ class PostsController extends Controller
 
               $data['image'] = $image;
         }
-           
+
             // update attribute
             $post->update($data);
 
@@ -117,7 +119,7 @@ class PostsController extends Controller
 
             // re-direct the user
             return redirect(route('posts.index'));
-    
+
     }
     /**
      * Remove the specified resource from storage.
@@ -127,7 +129,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::withTrashed()->where('id', $id)->firstOrFail();  
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
         if($post->trashed()){
             $post->forceDelete();
         }else{
@@ -137,7 +139,7 @@ class PostsController extends Controller
         session()->flash('success', 'The Item Has been Deleted Successfully!...');
         return redirect(route('posts.index'));
         }
-    
+
     /**
      * Displays a list of all trashed posts
      * @return \Illuminate\Http\Response
@@ -154,7 +156,7 @@ class PostsController extends Controller
         return redirect()->back();
     }
     public function category(Category $category){
-          
+
         return view('blog.category')
         ->with('category', $category)
         ->with('posts', $category->posts()->searched()->paginate(6))

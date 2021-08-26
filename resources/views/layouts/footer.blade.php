@@ -15,7 +15,7 @@
                 <li><a href="http://www.linkedin.com/company/the-redgem-technologies-inc" target="blank"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
             </ul>
         </div>
-      
+
     <div class="sec quicklinks">
         <h2>Quick Links</h2>
         <ul>
@@ -32,11 +32,11 @@
             <span>Mayfair, ile-ife, Osun State <br>Nigeria</span></li>
             </li>
             <li>
-    
+
         </li>
             <li>
-            <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
-            <p><a href="mailto:mailto:redgem.inc@gmail.com"></a>
+
+            <p><a href="mailto:funmilolajane@gmail.com"><span><i class="fa fa-envelope" aria-hidden="true"></i>  Message </span></a>
         </li>
         </ul>
     </div>

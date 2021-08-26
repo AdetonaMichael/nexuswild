@@ -19,20 +19,21 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show');
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category');
-Route::get('blog/tags/{tag}', [PostsController::class,'tag'])->name('blog.tag');
+})->middleware('pagespeed');
+    Route::resource('posts', PostsController::class)->middleware('pagespeed');
+    Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show')->middleware('pagespeed');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('pagespeed')->middleware('pagespeed');
+Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category')->middleware('pagespeed');
+Route::get('blog/tags/{tag}', [PostsController::class,'tag'])->name('blog.tag')->middleware('pagespeed');
 Auth::routes();
 
-Route::middleware(['auth'])->group(function (){
+Route::middleware(['auth','pagespeed'])->group(function (){
     Route::resource('posts', PostsController::class);
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
     Route::get('trashed-posts', [PostsController::class, 'trashed'])->name('trashed-posts.index');
     Route::put('restore-post/{post}', [PostsController::class, 'restore'])->name('restore-posts');
-    
+
 });
 
 Route::middleware(['auth','admin'])->group(function(){

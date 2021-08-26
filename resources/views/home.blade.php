@@ -41,7 +41,7 @@ NexusWildSkinCare | Blog
 						  </button>
 
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="{{ route('users.edit-profile') }}">
+							<a class="dropdown-item" href="{{ route('posts.index') }}">
 								My Profile
 							</a>
 							<a class="dropdown-item" href="{{ route('logout') }}"
@@ -56,7 +56,7 @@ NexusWildSkinCare | Blog
 					</li>
 				@endguest
 			</ul>
-			
+
                 </div>
             </div>
         </nav>
@@ -92,7 +92,7 @@ NexusWildSkinCare | Blog
 		<div class="main-content">
 			<!-- Featured
             ================================================== -->
-	
+
 			<!-- Posts Index
         ================================================== -->
 			<section class="recent-posts row">
@@ -130,9 +130,9 @@ NexusWildSkinCare | Blog
 							</div>
 						</div>
 					</div>
-					@endforeach				
+					@endforeach
 					<!-- end post -->
-					  
+
 					<!-- end post -->
 				</div>
 				@forelse($posts as $post)
@@ -147,7 +147,7 @@ NexusWildSkinCare | Blog
 			</section>
 		</div>
 	</div>
-	
+
 </div>
 
 @endsection
@@ -158,4 +158,4 @@ NexusWildSkinCare | Blog
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src={{ asset('js/scripts.js') }}></script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61210f2ea766e0e5"></script>
-@endsection 
+@endsection
