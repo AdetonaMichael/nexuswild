@@ -19,15 +19,15 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', function () {
     return view('welcome');
-})->middleware('pagespeed');
+})->middleware('pagespeed',);
     Route::resource('posts', PostsController::class)->middleware('pagespeed');
     Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show')->middleware('pagespeed');
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('pagespeed')->middleware('pagespeed');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('pagespeed')->middleware(['pagespeed','doNotCacheResponse']);
 Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category')->middleware('pagespeed');
 Route::get('blog/tags/{tag}', [PostsController::class,'tag'])->name('blog.tag')->middleware('pagespeed');
 Auth::routes();
 
-Route::middleware(['auth','pagespeed'])->group(function (){
+Route::middleware(['auth','pagespeed','doNotCacheResponse'])->group(function (){
     Route::resource('posts', PostsController::class);
     Route::resource('categories', CategoriesController::class);
     Route::resource('tags', TagsController::class);
@@ -36,7 +36,7 @@ Route::middleware(['auth','pagespeed'])->group(function (){
 
 });
 
-Route::middleware(['auth','admin'])->group(function(){
+Route::middleware(['auth','admin','doNotCacheResponse'])->group(function(){
     Route::get('users/profile', [UsersController::class,'edit'])->name('users.edit-profile');
     Route::put('users/profile', [UsersController::class,'update'])->name('users.update-profile');
     Route::get('users',[UsersController::class,'index'])->name('users.index');

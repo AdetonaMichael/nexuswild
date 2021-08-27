@@ -116,13 +116,12 @@ NexusWildSkinCare | Blog
 								<div class="metafooter">
 									<div class="wrapfooter">
 										<span class="meta-footer-thumb">
-											<img src="{{ Gravatar::src($post->user->email) }}" alt="User Gravater">
+											<img src="{{ Gravatar::src($post->user->email) }}" height="100" widht="100" style="border-radius:45px;" alt="User Gravater">
 										</span>
 										<span class="author-meta">
 										<span class="post-name"><a target="_blank" href="#">{{ $post->user->name }}</a></span><br/>
 										<span class="post-date text-danger">{{ $post->published_at }}</span>
 										</span>
-										<span class="post-read-more"><a href="single.html" title="Read Story"><i class="fa fa-link"></i></a></span>
 										<div class="clearfix">
 										</div>
 									</div>

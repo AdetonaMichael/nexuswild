@@ -62,7 +62,7 @@ NexusWildSkinCare | Home
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-heading text-uppercase text-monospace text-white"> WildSkin Skin </div>
+                <div class="masthead-heading text-uppercase text-monospace text-white"> <span style="color:#931414;">W</span>ild<span style="color:#e3e35e;">S</span>kin Ca<span style="color:#7bbff5;">r</span>e</div>
                 <div class="masthead-subheading"></div>
                 <a class="btn btn-primary btn-xl text-uppercase" id="services" href="{{ route('home') }}">Learn More</a>
             </div>

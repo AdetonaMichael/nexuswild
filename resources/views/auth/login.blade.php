@@ -6,13 +6,13 @@
 @endsection
 
 @section('content')
-<div class="context text-center">
+<div style="position: relative; top:150px " class="context text-center text-uppercase">
     <h1>NexusWild SkinCare</h1>
 </div>
 <div class="container">
-  
+
     <div class="row justify-content-center login_holder">
-     
+
         <div class="col-md-8">
             <div  class="card pb-5">
                 <div class="card-header login_header">{{ __('Login') }}</div>
