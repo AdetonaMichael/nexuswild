@@ -22,7 +22,7 @@ NexusWildSkinCare |Profile Home
       <tbody>
         @foreach($users as $user)
           <tr>
-            {{-- <td><img src="{{ asset('storage/'.$post->image)}}" width=60 height=60></td> --}}
+            {{-- <td><img src="{{ asset('public/'.$post->image)}}" width=60 height=60></td> --}}
             <td><img src="{{ Gravatar::src($user->email) }}" alt="User Gravater"></td>
             <td><p>{{ $user->name }}</p></td>
             <td>{{ $user->email }}</td>
@@ -32,7 +32,7 @@ NexusWildSkinCare |Profile Home
                 <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-success btn-sm">Make Admin</button>
-                
+
                 </form>
                  @endif
                 </td>
@@ -43,7 +43,7 @@ NexusWildSkinCare |Profile Home
     @else
     <h3 class="text-center">No Users Yet</h3>
     @endif
-  
+
   </div>
 </div>
 @endsection

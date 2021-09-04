@@ -56,7 +56,7 @@
 					</li>
 				@endguest
 			</ul>
-			
+
                 </div>
             </div>
         </nav>
@@ -70,8 +70,8 @@
 			<h1>NEXUS WILD SKIN CARE</h1>
 			<h2 class="lead">Why You Just Want To Tell the Story Behind your Beauty</h2>
 			<h3 class="lead text-white">{{ $post->name }}</h3>
-			
-            
+
+
 		</div>
 		</section>
 		<div id="carouselExampleSlidesOnly" class="carousel slide d-md-none" data-bs-ride="carousel">
@@ -93,7 +93,7 @@
 		<div class="main-content">
 			<!-- Begin Article
             ================================================== -->
-			<div class="row">			
+			<div class="row">
 				<!-- Post -->
 				<div class="col-sm-8">
 					<div class="mainheading">
@@ -114,11 +114,12 @@
                         <hr/>
 					</div>
 					<!-- Post Featured Image -->
-					<img class="featured-image img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="">
+				    <img class="img-fluid" src="{{ asset('../storage/'.$post->image) }}" alt="Tree of Codes">
+					{{-- <img class="featured-image img-fluid" src="{{ asset('storage/'.$post->image) }}" alt="Blog image"> --}}
 					<!-- End Featured Image -->
 					<!-- Post Content -->
 					<div class="article-post">
-						{{!! $post->content !!}}
+						{!! $post->content !!}
 						<div class="clearfix">
 						</div>
 					</div>
@@ -148,7 +149,7 @@
                         <div id="disqus_thread">
                         </div>
                         <script type="text/javascript">
-                            var disqus_shortname = 'demowebsite'; 
+                            var disqus_shortname = 'demowebsite';
                             var disqus_developer = 0;
                             (function() {
                                 var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -158,7 +159,7 @@
                         </script>
                         <noscript>
                         Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-                        </noscript>                        
+                        </noscript>
                         </section>
                     </div>
                     </section> --}}
@@ -166,11 +167,10 @@
                     ================================================== -->
 				</div>
 				<!-- End Post -->
-                
                 <!-- Sidebar -->
 				@include('partials.sidebar')
                 <!-- End Sidebar -->
-                
+
 			</div>
 
 		</div>
@@ -185,4 +185,4 @@
 <script src={{ asset('js/scripts.js') }}></script>
 <!-- Go to www.addthis.com/dashboard to customize your tools -->
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-61210f2ea766e0e5"></script>
-@endsection 
+@endsection

@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        // Spatie\Newsletter\NewsletterServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
+        // 'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
 
     ],
 

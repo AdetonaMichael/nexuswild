@@ -6,6 +6,9 @@ use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\TagsController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Http\Request;
+use Spatie\Newsletter\NewsletterFacade as Newsletter;
+// use Newsletter;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,10 @@ use App\Http\Controllers\HomeController;
 */
 Route::get('/', function () {
     return view('welcome');
-})->middleware('pagespeed',);
-    Route::resource('posts', PostsController::class)->middleware('pagespeed');
-    Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show')->middleware('pagespeed');
+})->middleware('pagespeed');
+
+Route::resource('posts', PostsController::class)->middleware('pagespeed');
+Route::get('/blog/posts/{post}',[PostsController::class, 'show'])->name('blog.show')->middleware(['pagespeed','doNotCacheResponse']);
 Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('pagespeed')->middleware(['pagespeed','doNotCacheResponse']);
 Route::get('blog/categories/{category}', [PostsController::class,'category'])->name('blog.category')->middleware('pagespeed');
 Route::get('blog/tags/{tag}', [PostsController::class,'tag'])->name('blog.tag')->middleware('pagespeed');

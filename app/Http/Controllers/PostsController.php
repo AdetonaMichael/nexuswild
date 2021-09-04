@@ -7,6 +7,7 @@ use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
+use App\Models\User;
 use App\Http\Middleware\VerifyCategoriesCount;
 
 class PostsController extends Controller
@@ -21,7 +22,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::all());
+        return view('posts.index')
+        ->with('posts', Post::all())
+        ->with('users', User::all())
+        ->with('categories_count', Category::all())
+        ->with('tag_count', Tag::all());
     }
     public function try(){
         return view('try');
@@ -52,9 +57,9 @@ class PostsController extends Controller
           'description'=>$request->description,
           'content'=>$request->content,
           'image'=>$image,
-          'category_id'=>$request->category,
           'published_at'=>$request->published_at,
-          'user_id' => auth()->user()->id
+          'user_id' => auth()->user()->id,
+          'category_id' => $request->category
 
         ]);
 

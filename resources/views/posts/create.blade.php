@@ -11,7 +11,7 @@ NexusWildSkinCare | Create Post
     <div class="card-header">
        {{ isset($post)?"Edit Post":"Create Post" }}
     </div>
-    
+
     <div class="card-body">
         @include('partials.errors')
        <form action="{{ isset($post)? route('posts.update', $post->id) : route('posts.store') }}" method="POST" enctype="multipart/form-data">
@@ -21,11 +21,11 @@ NexusWildSkinCare | Create Post
           @endif
            <div class="form-group">
                <label for="title">Title</label>
-               <input type="text" class="form-control" name="title" id="title" value="{{ isset($post)? $post->title:'' }}"> 
+               <input type="text" class="form-control" name="title" id="title" value="{{ isset($post)? $post->title:'' }}">
            </div>
            <div class="form-group">
                <label for="description">Description</label>
-               <textarea name="description" id="description" cols="5" rows="5" class="form-control" >{{ isset($post)? $post->description:'' }}</textarea> 
+               <textarea name="description" id="description" cols="5" rows="5" class="form-control" >{{ isset($post)? $post->description:'' }}</textarea>
            </div>
            <div class="form-group">
                <label for="content">Content</label>
@@ -35,7 +35,7 @@ NexusWildSkinCare | Create Post
            </div>
            <div class="form-group">
             <label for="published_at">Published At</label>
-            <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($post)? $post->published_at:'' }}"> 
+            <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($post)? $post->published_at:'' }}">
         </div>
         @if(isset($post))
           <div class="form-group">
@@ -44,7 +44,7 @@ NexusWildSkinCare | Create Post
         @endif
            <div class="form-group">
             <label for="image">Image</label>
-            <input type="file" class="form-control btn btn-primary" name="image" id="image"> 
+            <input type="file" class="form-control btn btn-primary" name="image" id="image">
            </div>
            <div>
             <label for="Category">Category</label>
@@ -78,7 +78,7 @@ NexusWildSkinCare | Create Post
                    {{ $tag->name }}
                </option>
             @endforeach
-           </select>   
+           </select>
         </div>
         @endif
         <div class="form-group py-4">
@@ -88,24 +88,27 @@ NexusWildSkinCare | Create Post
     </div>
 </div>
 @endsection
-@section('script')
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    flatpickr('#published_at',{
-        enableTime: true,
-        enableSeconds: true
-    })
-
-    $(".js-example-tokenizer").select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
-})
-    </script>
-@endsection
 @section('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" integrity="sha512-5m1IeUDKtuFGvfgz32VVD0Jd/ySGX7xdLxhqemTmThxHdgqlgPdupWoSN8ThtUSLpAGBvA8DY2oO7jJCrGdxoA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
+
+@section('script')
+{{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js" integrity="sha512-+ruHlyki4CepPr07VklkX/KM5NXdD16K1xVwSva5VqOVbsotyCQVKEwdQ1tAeo3UkHCXfSMtKU/mZpKjYqkxZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
+<script>
+    // flatpickr("#published_at");
+    flatpickr('#published_at',{
+        enableTime: true
+    });
+
+    $(".js-example-tokenizer").select2({
+    tags: true,
+    tokenSeparators: [',', ' ']
+})
+</script>
+

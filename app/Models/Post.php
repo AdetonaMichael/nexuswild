@@ -38,7 +38,7 @@ class Post extends Model
         return $query->where('published_at', '<=', now());
     }
     /**
-     * 
+     *
      * Check if a Post has tag
      * @return bool
      */
