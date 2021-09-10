@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
 use App\Http\Middleware\VerifyCategoriesCount;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -50,13 +51,18 @@ class PostsController extends Controller
     public function store(CreatePostRequest $request)
     {
         // upload the image
-        $image = $request->image->store('posts');
+        // $image = $request->image->store('posts');
+        // $image = Storage::disk('local')->put('exa', 'Contents');
+        $destination_path = 'public/images/posts';
+        $image = $request->file('image');
+        $image_name = $image->getClientOriginalName();
+        $path = $request->file('image')->storeAs($destination_path, $image_name);
         //create the post
         $post = Post::create([
           'title'=> $request->title,
           'description'=>$request->description,
           'content'=>$request->content,
-          'image'=>$image,
+          'image'=>$path,
           'published_at'=>$request->published_at,
           'user_id' => auth()->user()->id,
           'category_id' => $request->category

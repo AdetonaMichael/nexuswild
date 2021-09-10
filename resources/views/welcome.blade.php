@@ -5,18 +5,17 @@ NexusWildSkinCare | Home
 @section('nav')
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand" href="/"><img src="/images/nexus.svg" height="100" width="150" alt="NexusWildskinCare" /></a>
+        <a class="navbar-brand" href="/"><img src="/images/nexus.svg" width="150" height="100" alt="Nexus Wild" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fas fa-bars ms-1"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-
                 <li class="nav-item"><a class="nav-link" href="/home">Blog</a></li>
-                {{-- <li class="nav-item"><a class="nav-link" href="#services">Services</a></li> --}}
-                <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#portfolio">Portfolio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/#about">About</a></li>
             </ul>
                         <ul class="navbar-nav ">
         <!-- Authentication Links -->
@@ -34,6 +33,9 @@ NexusWildSkinCare | Home
             @endif
         @else
             <li class="nav-item dropdown">
+                {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ Auth::user()->name }}
+                </a> --}}
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ Auth::user()->name }}
                   </button>

@@ -29,10 +29,10 @@ NexusWildSkinCare | Categories List
                    <td>
                      {{ $category->posts->count() }}
                    </td>
-                   <td><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm text-white">Edit</a>
-                       <button class="btn btn-danger btn-sm" onclick="handleDelete({{ $category->id }})">Delete</button>
+                   <td><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info btn-sm text-white mr-2">Edit</a>
+                       <button class="btn btn-danger btn-sm " onclick="handleDelete({{ $category->id }})">Delete</button>
                 </td>
-                   
+
                </tr>
              @endforeach
         </tbody>
@@ -40,11 +40,11 @@ NexusWildSkinCare | Categories List
       @else
       <h3 class="text-center">No Categories Yet</h3>
       @endif
-       
+
         <!-- Modal -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="" method="post" id="deleteCategoryForm">
+        <form action="" method="POST" id="deleteCategoryForm">
             @csrf
             @method('DELETE')
             <div class="modal-content">
@@ -68,14 +68,17 @@ NexusWildSkinCare | Categories List
     </div>
 </div>
 @endsection
+@section('css')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@endsection
+
 @section('script')
 <script>
-  function handleDelete(id){
-      
-      var form = document.getElementById('deleteCategoryForm')
-      form.action = '/categories/'+ id
-      console.log('deleted', form);
-      $('#deleteModal').modal('show')
-  }  
+  function handleDelete(id) {
+      var form = document.getElementById('deleteCategoryForm');
+      form.action = '/categories/'+ id;
+
+    $('#deleteModal').modal('show');
+  }
 </script>
 @endsection

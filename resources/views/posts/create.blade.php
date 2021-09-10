@@ -35,7 +35,7 @@ NexusWildSkinCare | Create Post
            </div>
            <div class="form-group">
             <label for="published_at">Published At</label>
-            <input type="text" class="form-control" name="published_at" id="published_at" value="{{ isset($post)? $post->published_at:'' }}">
+            <input type="date" class="form-control" name="published_at" id="published_at" value="{{ isset($post)? $post->published_at:'' }}">
         </div>
         @if(isset($post))
           <div class="form-group">
@@ -48,7 +48,7 @@ NexusWildSkinCare | Create Post
            </div>
            <div>
             <label for="Category">Category</label>
-            <select name="category" id="category" class="form-control">
+            <select name="category" id="category" class="form-control tags-selector">
                @foreach($categories as $category)
                 <option value="{{ $category->id }}"
                     @if(isset($post))
@@ -95,20 +95,14 @@ NexusWildSkinCare | Create Post
 @endsection
 
 @section('script')
-{{-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> --}}
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js" integrity="sha512-+ruHlyki4CepPr07VklkX/KM5NXdD16K1xVwSva5VqOVbsotyCQVKEwdQ1tAeo3UkHCXfSMtKU/mZpKjYqkxZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js" integrity="sha512-2RLMQRNr+D47nbLnsbEqtEmgKy67OSCpWJjJM394czt99xj3jJJJBQ43K7lJpfYAYtvekeyzqfZTx2mqoDh7vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 @endsection
 <script>
-    // flatpickr("#published_at");
-    flatpickr('#published_at',{
-        enableTime: true
-    });
 
-    $(".js-example-tokenizer").select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
-})
+        $('.tags-selector').select2();
+
 </script>
 
